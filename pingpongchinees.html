@@ -20,7 +20,7 @@
             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="section-2">Section</a>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -57,7 +57,7 @@
         </div>
       </div>
     </section>
-    <div class="pimg2">
+    <div class="pimg2" data-href="section-2">
       <div class="paragraph">
         <div class="container">
           <div class="d-flex justify-content-center">
@@ -207,5 +207,17 @@
     </section>
     <script type="text/javascript" src="assets/jquery/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      var link = $('.nav-link');
+
+      link.on('click', function(e){
+        e.preventDefault();
+        var section = $(this).attr('href');
+        $('html, body').animate({
+          scrollTop: $("div[data-href="+section+"]").offset().top
+        }, 2000);
+      });
+
+    </script>
   </body>
 </html>
