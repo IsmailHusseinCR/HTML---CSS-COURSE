@@ -1,0 +1,160 @@
+
+<style>
+
+
+body{
+  background-color: spacegrey;
+  color:#555;
+  font-family: Roboto, sans-serif,Helvetica;
+  font-weight: 200;
+  margin:0;
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+
+a:hover{
+  color: blue;
+}
+a:active{
+  color: red;
+}
+.container{
+  width: 80%;
+  margin: auto;
+}
+.button{
+    background-color: black;
+  color:#fff;
+  padding: 10px 15px;
+  border: none;
+}
+.clr{
+  clear: both;
+  /* voor floating elements die niet gelijk staan aan andere elements */
+}
+.box-1{
+  background-color: #333;
+  color:#fff;
+  border: 5px red solid;
+  border-width: 3px;
+  padding: 20px 45px;
+}
+.box-1 h1{
+  font-family: Arial;
+  font-size: 700;
+  font-style: italic;
+  text-transform: uppercase;
+}
+
+.box-2{
+  border: 3px dotted lightgrey;
+  padding: 20px;
+  margin: 20px 0px;
+}
+
+.categories{
+  border: 1px solid red;
+  padding: 10px;
+}
+.categories h2{
+  text-align: center;
+}
+
+.categories ul{
+  padding: 0;
+  list-style: none;
+}
+.categories li{
+  padding-bottom: 6px;
+}
+.my-form{
+  padding: 20px;
+}
+
+.my-from.form-group{
+  padding-bottom: 0.4em;
+}
+.my-form label{
+  display:block;
+  /* block level elements go to a new line */
+}
+
+.my-form input[type="text"], .my-form textarea{
+  width: 100%;
+  padding: 8px;
+  /*gooit 8px padding in de input veld */
+}
+.block{
+  float:left;
+  width: 33.3%;
+  border: 1px solid red;
+  padding: 20px;
+  box-sizing: border-box;
+  /*it takes in padding and border en applies in de width */
+}
+
+</style>
+<div class="container">
+  <div class="box-1">
+      <h1>
+  Hello World
+  </h1>
+      <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id elementum ex, at ullamcorper tellus. Nulla facilisis a felis sed congue. Suspendisse potenti. Praesent in est condimentum odio convallis vulputate in a nisi. In hac habitasse platea dictumst. Phasellus feugiat arcu sed orci maximus rhoncus. Nunc tempor volutpat velit eu congue. Quisque quis egestas nibh. Integer sed neque tellus. Donec vel ligula et metus imperdiet maximus.
+      </p>
+  </div>
+  <div class="box-2">
+      <h1>
+  Bye World
+  </h1>
+      <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id elementum ex, at ullamcorper tellus. Nulla facilisis a felis sed congue. Suspendisse potenti. Praesent in est condimentum odio convallis vulputate in a nisi. In hac habitasse platea dictumst. Phasellus feugiat arcu sed orci maximus rhoncus. Nunc tempor volutpat velit eu congue. Quisque quis egestas nibh. Integer sed neque tellus. Donec vel ligula et metus imperdiet maximus.
+      </p>
+      <a class="button" href="">Read More</a>
+  </div>
+  <div class="categories">
+      <h2>
+  Categories
+  </h2>
+      <ul>
+          <li><a href="#">Food</a>
+          </li>
+          <li><a href="#">Drinks</a>
+          </li>
+          <li><a href="#">Training in CSS</a>
+          </li>
+      </ul>
+  </div>
+  <form class="my-form">
+      <div class="form-group">
+          <label>Name:</label>
+          <input type="text" name="name">
+      </div>
+      <div class="form-group">
+          <label>Email:</label>
+          <input type="text" name="email">
+      </div>
+      <div class="form-group">
+          <label>Message:</label>
+          <textarea name="message"></textarea>
+      </div>
+      <input class="button" type="submit" value="submit" name="">
+      
+  </form>
+ <div class="block">
+  <h3>Header</h3>
+   <p>  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id elementum ex, at ullamcorper tellus. Nulla facilisis a felis sed congue. Suspendisse potenti. Praesent</p>
+ </div>
+    <div class="block">
+  <h3>Header</h3>
+   <p>  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id elementum ex, at ullamcorper tellus. Nulla facilisis a felis sed congue. Suspendisse potenti. Praesent</p>
+ </div>
+    <div class="block">
+  <h3>Header</h3>
+   <p>  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id elementum ex, at ullamcorper tellus. Nulla facilisis a felis sed congue. Suspendisse potenti. Praesent</p>
+ </div>
+ <div class="clr"></div>
+</div>
+<!-- Container ends here -->
