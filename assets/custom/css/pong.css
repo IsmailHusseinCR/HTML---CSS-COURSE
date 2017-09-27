@@ -4,12 +4,38 @@ margin: 0;
 font-size: 16px;
 font-weight: 400;
 line-height: 1.5em;
-background-color: #fceee3;
+background-color: #f8e7dc;
+}
+
+.sub-hero
+{
+  background-color: #fceee3;
+}
+
+.pb-big
+{
+  padding-bottom: 10rem;
+}
+
+.pt-big
+{
+  padding-top: 10rem;
 }
 
 .bg-white
 {
   background-color: #fff;
+}
+
+.big-text
+{
+  font-size: 1.8rem;
+  line-height: 3rem;
+  font-weight: bold;
+}
+
+.large-icon{
+  font-size: 25rem;
 }
 
 .pimg1,.pimg2,.pimg3{
@@ -19,7 +45,7 @@ background-color: #fceee3;
     background-repeat: no-repeat;
     background-attachment: fixed;
     /*
-    als we parralax wille
+    als we parralax willen
     background-attachment: fixed;
     */
 }
@@ -40,18 +66,6 @@ background-color: #fceee3;
  color: #ddd;
 
 } */
-<<<<<<< HEAD
-=======
-
-.paragraph{
-    position: absolute;
-    top: 16rem;
-}
-.section-p{
-	padding-top: 8px;
-}
-
->>>>>>> 50e479b3a110694b1828ce4a70bad7dd46a0f1af
 .footer{
     background-color: rgba(178, 166, 166, 0.43)
 
