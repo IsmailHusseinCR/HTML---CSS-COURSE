@@ -39,6 +39,9 @@ line-height: 1.5em;
     position: absolute;
     top: 16rem;
 }
+.section-p{
+	padding-top: 8px;
+}
 
 .footer{
     background-color: rgba(178, 166, 166, 0.43)
