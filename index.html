@@ -46,7 +46,7 @@
       </div>
     </div>
 
-    <section class="container text-center pb-big">
+    <section class="container text-center pb-big" data-1000="opacity:2;display:block" data-2000="opacity:0;">
       <div class="row">
         <div class="col-12">
           <h3 class="display-4">iPong Stack X</h3>
@@ -64,8 +64,8 @@
       </div>
     </section>
 
-    <section class="sub-hero bg-hero text-center pt-big pb-big">
-      <div class="container">
+    <section class="intro sub-hero bg-hero text-center pt-big pb-big">
+      <div class="container" data-1400="position:sticky;top:20%;">
         <div class="row">
           <div class="col-12">
             <h3>
@@ -76,15 +76,24 @@
         </div>
         <div class="row mt-4">
           <div class="col-sm-12">
-            <p class="big-text">
-              Our vision has always been to create an iStack that is entirely from lego.
-              One so immersive the device itself disappears into the experience.
-              And so intelligent it can respond to a wall.
-              With iPong Stack X, that vision is now a reality.<br>
-              Say hello to the future.
+            <p class="big-text" >
+              <span data-2800="opacity:0;" data-3000="opacity:1;">Our vision has always been to create an iStack that is entirely from lego.</span>
+              <br>
+              <span data-3400="opacity:0;" data-3600="opacity:1;">One so immersive the device itself disappears into the experience.</span>
+              <br>
+              <span data-4000="opacity:0;" data-4200="opacity:1;">And so intelligent it can respond to a wall.</span>
+              <br>
+              <span data-4600="opacity:0;" data-4800="opacity:1;">With iPong Stack X, that vision is now a reality.</span>
             </p>
           </div>
         </div>
+      </div>
+
+    </section>
+
+    <section style="height:35%" class="sub-hero bg-hero text-center pt-big pb-big">
+      <div style="position:sticky;top:50%;" data-6000="opacity:0" data-7000="opacity:1;" data-8000="opacity:0;">
+        <h3 class="display-4">Say hello to the future.</h3>
       </div>
     </section>
 
@@ -198,7 +207,12 @@
       $(document).ready( function () {
 
         // Initialise the skrollr lib
-        // var s = skrollr.init();
+        var s = skrollr.init({
+          render: function(data) {
+              //Debugging - Log the current scroll position.
+              console.log(data.curTop);
+          }
+        });
 
         // Fades
         $('.fades').fadeIn(1500);
