@@ -1,13 +1,42 @@
-body, html{
-height: 100%;
-margin: 0;
-font-size: 16px;
-font-weight: 400;
-line-height: 1.5em;
-background-color: #f8e7dc;
+body, html
+{
+  height: 100%;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5em;
+  background-color: #f8e7dc;
+  position: relative;
+}
+
+.ball.fixed
+{
+  position: fixed;
+  width: 500px;
+  height: 200px;
+  top: 40%;
+  left: 50%;
+  margin-top: -100px; /* Negative half of height. */
+  margin-left: -250px; /* Negative half of width. */
+  z-index: 0;
+}
+
+.first
+{
+  min-height: 100%;
+}
+
+.fades
+{
+  display: none;
 }
 
 .sub-hero
+{
+  position: relative;
+}
+
+.sub-hero.bg-hero
 {
   background-color: #fceee3;
 }
@@ -34,42 +63,32 @@ background-color: #f8e7dc;
   font-weight: bold;
 }
 
-.large-icon{
+.large-icon
+{
   font-size: 25rem;
 }
 
-.pimg1,.pimg2,.pimg3{
-    position: relative;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    /*
-    als we parralax willen
-    background-attachment: fixed;
-    */
-}
-.pimg1{
-    /*background-image: url('../../img/hk.jpg');*/
-    min-height: 100%;
-}
-.pimg2{
-    background-image: url('../../img/shanghai.jpg');
-    min-height: 400px;
-}
-.pimg3{
-    background-image: url('../../img/city.jpeg');
-    min-height: 400px;
-}
- /* .container {
- background-color: #282e34;
- color: #ddd;
+.parallax
+{
+  /* The image used */
+  background-image: url("../../img/LEGO_TECHNIC_Logo.gif");
 
-} */
-.footer{
-    background-color: rgba(178, 166, 166, 0.43)
+  /* Set a specific height */
+  height: 15rem;
+  padding-top: 65%;
 
+  /* Create the parallax scrolling effect */
+  background-size: 50rem ;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
 }
+
+.footer
+{
+  background-color: rgba(178, 166, 166, 0.43)
+}
+
 .footer-distributed{
 	background-color: #292c2f;
 	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
@@ -77,9 +96,7 @@ background-color: #f8e7dc;
 	width: 100%;
 	text-align: left;
 	font: normal 16px sans-serif;
-
 	padding: 45px 50px;
-	margin-top: 80px;
 }
 
 .footer-distributed .footer-left p{
@@ -143,10 +160,4 @@ background-color: #f8e7dc;
 	.footer-distributed .footer-left p.footer-links{
 		line-height: 1.8;
 	}
-}
-
-
-.bg-dark {
-  color: #fff;
-  background-color: rgba(44, 62, 80, 1.0);
 }
