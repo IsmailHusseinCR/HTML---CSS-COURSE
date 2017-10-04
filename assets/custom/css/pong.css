@@ -88,6 +88,16 @@ body, html
   background-repeat: no-repeat;
 }
 
+.parallax-2
+{
+  background-image: url("../../img/table-tennis-2010329_1920.jpg");
+  /* Create the parallax scrolling effect */
+  height: 35rem;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 
 .footer-distributed{
 	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
