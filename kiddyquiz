@@ -1,0 +1,231 @@
+#include <Adafruit_NeoPixel.h>
+
+/*INITIALISATION*/
+#include <Stepper.h>
+#include "Timer.h"
+
+#define PIN      6
+#define N_LEDS 144
+ 
+Adafruit_NeoPixel strip = Adafruit_NeoPixel(12, PIN, NEO_GRB + NEO_KHZ800);
+
+  
+/*Timer*/
+Timer timer;
+int randomNumber;
+int randomTime;
+int tickEvent;
+
+int rndlong;
+int rndmid;
+int rndshort;
+int rndveryshort;
+
+/*Knop*/
+bool buttonNow = false;
+bool buttonBefore = false;
+bool ledStatus = false;
+int buttonPin = 2;
+bool start = false;
+bool isRotating = false;
+bool timeIsUp;
+
+/*StepperTeller*/
+int in1Pin = 12; /*c2*/
+int in2Pin = 11; /*c7*/
+int in3Pin = 10; /*h7*/
+int in4Pin = 9;  /*h2*/
+int steps = 0;
+Stepper motor(512, in1Pin, in2Pin, in3Pin, in4Pin);  
+
+/*UltaSonicSensor*/
+int trigPin = A0;
+int echoPin = A1;
+long duration;
+int distance;
+int randomPin = A5;
+
+/* NEOPIXEL*/
+int counter = 0;
+/*SETUP*/
+void setup(){
+  Serial.begin(9600);
+
+  start = false;
+  
+  /*Knop*/
+  pinMode(buttonPin, INPUT);
+
+  /*StepperTeller*/
+  pinMode(in1Pin, OUTPUT);
+  pinMode(in2Pin, OUTPUT);
+  pinMode(in3Pin, OUTPUT);
+  pinMode(in4Pin, OUTPUT);
+  randomSeed(analogRead(0)); 
+  motor.setSpeed(20);
+
+  /*UltraSonicSensor*/
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+
+ strip.begin();
+  
+}
+
+/*LOOP*/
+void loop() {
+     for (int i = 0; i < 12; i++)
+    {
+      if (i == counter % 12)
+      {
+        strip.setPixelColor(i, 255,0,0);
+      }
+    }
+    strip.show();
+
+    bool buttonNow = digitalRead(buttonPin);
+  
+   if (buttonNow == false && buttonBefore == true){
+          start = true;
+          Serial.print("op de knop");
+        }
+        
+        buttonBefore = buttonNow;
+  
+  if(start){
+   startNewRound();
+//   rotate();
+  }
+  
+  rotate(); 
+
+  /*Timer*/
+  timer.update();
+}
+
+
+void doSomething(){
+  Serial.print("2 second tick: millis()= ");
+  Serial.println(millis());
+}
+
+void generateRandomTime(){
+  /*Generate Random number*/
+  randomSeed(analogRead(randomPin));
+  randomNumber = random(randomPin);
+  randomTime = 1000 * (randomNumber + 4);
+  isRotating = false;
+}
+
+void stopRotating(){
+  Serial.print("gestopt");
+  timeIsUp = true;
+}
+
+void startNewRound(){
+   tickEvent = timer.after(randomTime, stopRotating);
+    generateRandomTime();
+    Serial.print(randomTime);
+    timeIsUp = false;
+    start = false;
+}
+
+void rotate(){
+    Serial.print("hij komt in rotate");
+     
+        
+    for(int i=0; i<650; i=i+10){
+        if(timeIsUp){
+          Serial.print("hier ben ik");
+          startNewRound();
+        }else{
+          steps =+ 10;
+          motor.step(steps);
+          steps = 0;
+          delay(0);
+          digitalWrite(trigPin, LOW);
+          delayMicroseconds(2);
+          digitalWrite(trigPin, HIGH);
+          delayMicroseconds(10);
+          digitalWrite(trigPin, LOW);
+          duration = pulseIn(echoPin, HIGH);
+          distance = duration * 0.34/2;
+
+          //Serial.print("distance = ");
+          //Serial.println(distance);
+          
+        }
+    }
+    for(int j=640; j>=0; j=j-10){  
+        
+        if(timeIsUp){
+          Serial.print("hier ben ik");
+          startNewRound();
+        }else{
+
+
+        
+        steps =- 10;
+        motor.step(steps);
+        steps = 0;
+        delay(0); 
+        digitalWrite(trigPin, LOW);
+        delayMicroseconds(2);
+        digitalWrite(trigPin, HIGH);
+        delayMicroseconds(10);
+        digitalWrite(trigPin, LOW);
+        duration = pulseIn(echoPin, HIGH);
+        distance = duration * 0.34/2;
+
+
+        if(distance > 140){
+          //Serial.print("distance > 150");
+          rndlong++;
+          Serial.print("rndlong = ");
+          Serial.println(rndlong);
+        }
+        if((distance > 80) && (distance < 140)){
+          rndmid++;
+          Serial.print("rndmid = ");
+          Serial.println(rndmid);
+        }
+        if((distance > 60) && (distance < 80)){
+          rndshort++;
+          Serial.print("rndshort = ");
+          Serial.println(rndshort);
+        }
+        if((distance > 50) && (distance < 60)){
+          rndveryshort++;
+          Serial.print("rndveryshort = ");
+          Serial.println(rndveryshort);
+        }
+        if(rndlong > 85){
+           counter++;
+          delay(10000);
+          rndlong = 0;
+          
+        }
+        if(rndmid > 90){
+           counter++;
+          delay(10000);
+          rndmid = 0;
+          
+        }
+        if(rndshort > 120){
+           counter++;
+          delay(10000);
+          rndshort = 0;
+          
+        }
+        if(rndveryshort > 200){
+           counter++;
+          delay(10000);
+          rndveryshort = 0;
+          
+        }
+        
+//        Serial.print("distance = ");
+//        Serial.println(distance);
+       }
+    }
+}
